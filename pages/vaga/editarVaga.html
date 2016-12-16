@@ -1,0 +1,75 @@
+<div id="editarVaga">
+
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <label class="panel-title pull-left">
+                <translate>LABEL.MANTER_VAGA</translate>
+            </label>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <label><translate>LABEL.UNIDADE</translate>:</label>
+                    <select class="form-control dropdown-toggle bordaLaranja">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label><translate>LABEL.FUNCAO</translate>:</label>
+                    <select class="form-control dropdown-toggle bordaLaranja">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label><translate>LABEL.VINCULO</translate>:</label>
+                    <select class="form-control dropdown-toggle bordaLaranja">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label><translate>LABEL.ESCOLARIDADE</translate>:</label>
+                    <select class="form-control dropdown-toggle bordaLaranja">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label><translate>LABEL.VAGAS_DISPONIVEIS</translate>:</label>
+                    <input class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label><translate>LABEL.CARGA_HORARIA</translate>:</label>
+                    <input class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label><translate>LABEL.CONHECIMENTO_MINIMO_NECESSARIO</translate>:</label>
+                    <input class="form-control">
+                </div>
+            </div>
+            <br/>
+
+            <div class="text-right">
+                <button class="btn btn-primary" title="{{'LABEL.SALVAR' | translate}}">
+                    <span class="glyphicon glyphicon-ok">&nbsp;</span><translate>LABEL.SALVAR</translate>
+                </button>
+                <button type="button" class="btn btn-primary" title="{{'LABEL.VOLTAR' | translate}}"
+                        data-ng-click="voltarPesquisaVaga();">
+                    <span class="glyphicon glyphicon-arrow-left">&nbsp;</span><translate>LABEL.VOLTAR</translate>
+                </button>
+                <button type="button" class="btn btn-primary" title="{{'LABEL.LIMPAR' | translate}}"
+                        data-ng-click="carregarPagina();">
+                    <span class="glyphicon glyphicon-refresh">&nbsp;</span><translate>LABEL.LIMPAR</translate>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

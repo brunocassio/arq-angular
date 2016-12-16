@@ -1,0 +1,124 @@
+<div id="acompanharAlocacao">
+
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <label class="panel-title pull-left">
+                <div data-ng-show="faseAlocacao === 'aprovacao'">
+                    <translate>LABEL.APROVAR_ALOCACAO</translate>
+                </div>
+
+                <div data-ng-show="faseAlocacao === 'homologacao'">
+                    <translate>LABEL.HOMOLOGAR_ALOCACAO</translate>
+                </div>
+
+                <div data-ng-show="faseAlocacao === 'saida'">
+                    <translate>LABEL.CONFIRMAR_SAIDA_SERVIDOR</translate>
+                </div>
+
+                <div data-ng-show="faseAlocacao === 'chegada'">
+                    <translate>LABEL.CONFIRMAR_CHEGADA_SERVIDOR</translate>
+                </div>
+            </label>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <label><translate>LABEL.CPF</translate>:</label>
+                    <input class="form-control" data-ng-model="servidor.cpf" disabled>
+                </div>
+                <div class="col-md-9">
+                    <label><translate>LABEL.NOME</translate>:</label>
+                    <input class="form-control" data-ng-model="servidor.nome" disabled>
+                </div>
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label><translate>LABEL.UNIDADE_ORIGEM</translate>:</label>
+                    <input class="form-control" data-ng-model="alocacao.unidadeOrigem" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label><translate>LABEL.UNIDADE_DESTINO</translate>:</label>
+                    <select class="form-control dropdown-toggle bordaLaranja" data-ng-model="alocacao.unidadeDestino"
+                            data-ng-options="reg for reg in listaUnidadeDestino track by reg"
+                            data-ng-disabled="alocacao.desabilitarUnidadeDestino">
+                    </select>
+                </div>
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label><translate>LABEL.SITUACAO</translate>:</label>
+                    <select class="form-control dropdown-toggle bordaLaranja" data-ng-model="alocacao.situacao"
+                            data-ng-options="reg for reg in listaSituacao track by reg"
+                            data-ng-disabled="alocacao.desabilitarSituacao">
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label><translate>LABEL.DATA_MOVIMENTACAO</translate>:</label>
+                    <label-input-data data-ng-model="alocacao.dataMovimentacao"
+                                      data-ng-disabled="alocacao.desabilitarDataMovimentacao"/>
+                </div>
+                <div class="col-md-6">
+                    <label><translate>LABEL.FUNCAO</translate>:</label>
+                    <select class="form-control dropdown-toggle bordaLaranja" data-ng-model="alocacao.funcao"
+                            data-ng-options="reg for reg in listaFuncao track by reg"
+                            data-ng-disabled="alocacao.desabilitarFuncao">
+                    </select>
+                </div>
+            </div>
+            <br/>
+
+            <div data-ng-show="faseAlocacao === 'homologacao'">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label><translate>LABEL.OBSERVACAO_GGP</translate>:</label>
+                        <input class="form-control" disabled>
+                    </div>
+                </div>
+                <br/>
+            </div>
+
+            <div data-ng-show="faseAlocacao === 'saida'">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label><translate>LABEL.DATA_SAIDA_SERVIDOR</translate>:</label>
+                        <label-input-data data-ng-model="acompanhamento"></label-input-data>
+                    </div>
+                </div>
+                <br/>
+            </div>
+
+            <div data-ng-show="faseAlocacao === 'chegada'">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label><translate>LABEL.DATA_CHEGADA_SERVIDOR</translate>:</label>
+                        <label-input-data data-ng-model="acompanhamento"></label-input-data>
+                    </div>
+                </div>
+                <br/>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label><translate>LABEL.OBSERVACAO</translate>:</label>
+                    <input class="form-control">
+                </div>
+            </div>
+            <br/>
+
+            <div class="text-right">
+                <button class="btn btn-primary" title="{{'LABEL.SALVAR' | translate}}">
+                    <span class="glyphicon glyphicon-ok">&nbsp;</span><translate>LABEL.SALVAR</translate>
+                </button>
+                <button type="button" class="btn btn-primary" title="{{'LABEL.VOLTAR' | translate}}"
+                        data-ng-click="voltarPesquisaAlocacao();">
+                    <span class="glyphicon glyphicon-arrow-left">&nbsp;</span><translate>LABEL.VOLTAR</translate>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

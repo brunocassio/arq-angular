@@ -1,0 +1,137 @@
+<div id="pesquisarAlocacao">
+    <script type="text/ng-template" id="modalHistoricoServidor">
+        <div ng-include src="'pages/alocacao/visualizarHistorico.html'" />
+    </script>
+
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <label class="panel-title pull-left">
+                <translate>LABEL.PESQUISAR_ALOCACAO</translate>
+            </label>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <label><translate>LABEL.CPF</translate>:</label>
+                    <input class="form-control" data-ng-model="alocacao.cpf" ui-br-cpf-mask>
+                </div>
+                <div class="col-md-9">
+                    <label><translate>LABEL.NOME</translate>:</label>
+                    <input class="form-control" data-ng-model="alocacao.nome">
+                </div>
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label><translate>LABEL.UNIDADE_ORIGEM</translate>:</label>
+                    <select class="form-control dropdown-toggle bordaLaranja">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label><translate>LABEL.UNIDADE_DESTINO</translate>:</label>
+                    <select class="form-control dropdown-toggle bordaLaranja">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label><translate>LABEL.FUNCAO</translate>:</label>
+                    <select class="form-control dropdown-toggle bordaLaranja">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label><translate>LABEL.INICIO_MOVIMENTACAO</translate>:</label>
+                    <label-input-data data-ng-model="alocacao.inicioMovimentacao"></label-input-data>
+                </div>
+                <div class="col-md-3">
+                    <label><translate>LABEL.FIM_MOVIMENTACAO</translate>:</label>
+                    <label-input-data data-ng-model="alocacao.fimMovimentacao"></label-input-data>
+                </div>
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label><translate>LABEL.SITUACAO</translate>:</label>
+                    <select class="form-control dropdown-toggle bordaLaranja">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+            </div>
+            <br/>
+
+            <div class="text-right">
+                <button type="button" class="btn btn-primary" title="{{'LABEL.NOVO' | translate}}"
+                        data-ng-click="novaAlocacao();">
+                    <span class="glyphicon glyphicon-plus">&nbsp;</span><translate>LABEL.NOVO</translate>
+                </button>
+                <button type="button" class="btn btn-primary" title="{{'LABEL.LIMPAR' | translate}}"
+                        data-ng-click="carregarPagina();">
+                    <span class="glyphicon glyphicon-refresh">&nbsp;</span><translate>LABEL.LIMPAR</translate>
+                </button>
+                <button class="btn btn-primary" title="{{'LABEL.PESQUISAR' | translate}}"
+                        data-ng-click="listarAlocacao();">
+                    <span class="glyphicon glyphicon-search">&nbsp;</span><translate>LABEL.PESQUISAR</translate>
+                </button>
+            </div>
+            <br/>
+
+            <div class="table-responsive" data-ng-show="listaAlocacaoResultado.length > 0">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2"><translate>LABEL.CPF</translate></th>
+                            <th class="col-md-3"><translate>LABEL.SERVIDOR</translate></th>
+                            <th class="col-md-2"><translate>LABEL.UNIDADE_ORIGEM</translate></th>
+                            <th class="col-md-2"><translate>LABEL.UNIDADE_DESTINO</translate></th>
+                            <th><translate>LABEL.DATA_ALOCACAO</translate></th>
+                            <th><translate>LABEL.SITUACAO</translate></th>
+                            <th class="col-md-3"><translate>LABEL.ACAO</translate></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="alocacao in listaAlocacaoResultado">
+                            <td>{{alocacao.cpfFormatado}}</td>
+                            <td>{{alocacao.nome}}</td>
+                            <td>{{alocacao.unidadeOrigem}}</td>
+                            <td>{{alocacao.unidadeDestino}}</td>
+                            <td class="text-center">{{alocacao.dataAlocacao}}</td>
+                            <td class="text-center">
+                                <span class="{{alocacao.icone}}"  aria-hidden="true"></span>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-table" title="{{'LABEL.ACOMPANHAR_ANDAMENTO' | translate}}"
+                                        data-ng-click="acompanharAlocacao(alocacao);">
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                </button>
+                                <button class="btn btn-table" title="{{'LABEL.HISTORICO_MOVIMENTACAO' | translate}}"
+                                        data-ng-click="abrirHistorico(alocacao);">
+                                    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                                </button>
+                                <button class="btn btn-table" title="{{'LABEL.ANEXAR_DOCUMENTOS' | translate}}"
+                                        data-ng-click="anexarDocumento(alocacao);">
+                                    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                                </button>
+                                <button class="btn btn-table" title="{{'LABEL.VERIFICAR_VAGAS' | translate}}"
+                                        data-ng-click="pesquisarVaga(alocacao);">
+                                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                                </button>
+                                <button class="btn btn-table" title="{{'LABEL.IMPRIMIR_ATO' | translate}}"
+                                        data-ng-click="imprimirAto(alocacao);">
+                                    <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

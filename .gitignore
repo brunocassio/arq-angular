@@ -1,0 +1,12 @@
+/node_modules
+node_modules
+.idea
+
+#Intellij
+*.iml
+.idea/
+workspace.xml
+tasks.xml
+
+#Mac Folder
+.DS_Store

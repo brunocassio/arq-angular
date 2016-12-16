@@ -1,0 +1,77 @@
+<div class="modal-header">
+    <h3 class="modal-title"><translate>LABEL.HISTORICO_ALOCACAO</translate></h3>
+</div>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-3">
+            <label><translate>LABEL.CPF</translate>:</label>
+            <input class="form-control" data-ng-model="nome" disabled>
+        </div>
+        <div class="col-md-9">
+            <label><translate>LABEL.SERVIDOR</translate>:</label>
+            <input class="form-control" data-ng-model="nome" disabled>
+        </div>
+    </div>
+    <br/>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label><translate>LABEL.UNIDADE_ORIGEM</translate>:</label>
+            <input class="form-control" disabled>
+        </div>
+        <div class="col-md-6">
+            <label><translate>LABEL.UNIDADE_DESTINO</translate>:</label>
+            <input class="form-control" disabled>
+        </div>
+    </div>
+    <br/>
+
+    <div class="row">
+        <div class="col-md-3">
+            <label><translate>LABEL.SITUACAO</translate>:</label>
+            <input class="form-control" disabled>
+        </div>
+        <div class="col-md-3">
+            <label><translate>LABEL.DATA_MOVIMENTACAO</translate>:</label>
+            <input class="form-control" disabled>
+        </div>
+        <div class="col-md-6">
+            <label><translate>LABEL.FUNCAO</translate>:</label>
+            <input class="form-control" disabled>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <div class="text-right">
+        <button type="button" class="btn btn-primary" title="{{'LABEL.VOLTAR' | translate}}"
+                data-ng-click="fechar();">
+            <span class="glyphicon glyphicon-arrow-left">&nbsp;</span><translate>LABEL.VOLTAR</translate>
+        </button>
+    </div>
+    <br/>
+
+    <div class="table-responsive" data-ng-show="listaHistorico.length > 0">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-2"><translate>LABEL.DATA_HORA</translate></th>
+                    <th class="col-md-3"><translate>LABEL.MOTIVO</translate></th>
+                    <th class="col-md-3"><translate>LABEL.USUARIO</translate></th>
+                    <th class="col-md-2"><translate>LABEL.CAMPO_ALTERADO</translate></th>
+                    <th class="col-md-2"><translate>LABEL.VALOR_CAMPO</translate></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="historico in listaHistorico">
+                    <td class="text-center">{{historico.data}}</td>
+                    <td class="text-left">{{historico.motivo}}</td>
+                    <td class="text-left">{{historico.usuario}}</td>
+                    <td class="text-left">{{historico.campoAlterado}}</td>
+                    <td class="text-left">{{historico.campoValor}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

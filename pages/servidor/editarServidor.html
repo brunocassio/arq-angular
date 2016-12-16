@@ -1,0 +1,296 @@
+<div id="editarServidor">
+    <script type="text/ng-template" id="modalEditarTelefone">
+        <div ng-include src="'pages/servidor/editarTelefone.html'" />
+    </script>
+
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <label class="panel-title pull-left">
+                <translate>LABEL.MANTER_CADASTRO_SERVIDOR</translate>
+            </label>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+                        <li data-ng-class="stepUmClass" data-ng-click="carregarStepUm();">
+                            <a href="javascript:void(0);"><h4 class="list-group-item-heading">Dados Pessoais</h4></a>
+                        </li>
+                        <li data-ng-class="stepDoisClass" data-ng-click="carregarStepDois();">
+                            <a href="javascript:void(0);"><h4 class="list-group-item-heading">Dados para Contato</h4></a>
+                        </li>
+
+                        <li data-ng-class="stepTresClass" data-ng-click="carregarStepTres();">
+                            <a href="javascript:void(0);"><h4 class="list-group-item-heading">Escolaridade</h4></a>
+                        </li>
+                        <li data-ng-class="stepQuatroClass" data-ng-click="carregarStepQuatro();">
+                            <a href="javascript:void(0);"><h4 class="list-group-item-heading">Dados Profissionais</h4></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="step-1" data-ng-show="step === 1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label><translate>LABEL.CPF</translate>:</label>
+                        <div data-ng-class="{'has-error': cpfInvalido}">
+                            <input class="form-control bordaLaranja" data-ng-model="servidor.cpf"
+                                   data-ng-required="true" ui-br-cpf-mask>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label><translate>LABEL.NOME</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.nome" data-ng-required="true">
+                    </div>
+                    <div class="col-md-3">
+                        <label><translate>LABEL.SEXO</translate>:</label><br>
+
+                        <input type="radio" data-ng-model="servidor.sexo" value="1" />
+                        <label class="control-label"><translate>LABEL.MASCULINO</translate></label>
+
+                        <input type="radio" data-ng-model="servidor.sexo" value="2" />
+                        <label class="control-label"><translate>LABEL.FEMININO</translate></label>
+                    </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label><translate>LABEL.IDENTIDADE</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.identidade"
+                               data-ng-required="true">
+                    </div>
+                    <div class="col-md-3">
+                        <label><translate>LABEL.UF</translate>:</label>
+                        <select class="form-control dropdown-toggle bordaLaranja">
+                            <option value="">Selecione</option>
+                            <option value="">Goiás</option>
+                            <option value="">Rio de Janeiro</option>
+                            <option value="">São Paulo</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label><translate>LABEL.DATA_NASCIMENTO</translate>:</label>
+                        <label-input-data data-ng-model="servidor.dataNascimento"></label-input-data>
+                    </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label><translate>LABEL.NATURALIDADE</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.naturalidade"
+                               data-ng-required="true">
+                    </div>
+                    <div class="col-md-3">
+                        <label><translate>LABEL.UF</translate>:</label>
+                        <select class="form-control dropdown-toggle bordaLaranja">
+                            <option value="">Selecione</option>
+                            <option value="">Goiás</option>
+                            <option value="">Rio de Janeiro</option>
+                            <option value="">São Paulo</option>
+                        </select>
+                    </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label><translate>LABEL.NOME_MAE</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.nomeMae"
+                               data-ng-required="true">
+                    </div>
+                    <div class="col-md-6">
+                        <label><translate>LABEL.NOME_PAI</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.nomePai"
+                               data-ng-required="true">
+                    </div>
+                </div>
+            </div>
+
+            <div id="step-2" data-ng-show="step === 2">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label><translate>LABEL.CEP</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.endereco.cep"
+                               data-ng-required="true">
+                    </div>
+                    <div class="col-md-9">
+                        <label><translate>LABEL.LOGRADOURO</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.endereco.logradouro"
+                               data-ng-required="true">
+                    </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label><translate>LABEL.NUMERO</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.endereco.numero"
+                               data-ng-required="true">
+                    </div>
+                    <div class="col-md-6">
+                        <label><translate>LABEL.COMPLEMENTO</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.endereco.complemento"
+                               data-ng-required="true">
+                    </div>
+                    <div class="col-md-3">
+                        <label><translate>LABEL.BAIRRO</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.endereco.bairro"
+                               data-ng-required="true">
+                    </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><translate>LABEL.CIDADE</translate>:</label>
+                                <input class="form-control bordaLaranja" data-ng-model="servidor.endereco.cidade"
+                                        data-ng-required="true">
+                            </div>
+                            <div class="col-md-6">
+                                <label><translate>LABEL.UF</translate>:</label>
+                                <select class="form-control dropdown-toggle bordaLaranja">
+                                    <option value="">Selecione</option>
+                                    <option value="">Goiás</option>
+                                    <option value="">Rio de Janeiro</option>
+                                    <option value="">São Paulo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br/>
+
+                        <label><translate>LABEL.EMAIL</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.email">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label><translate>LABEL.TELEFONES</translate>:</label>
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-4"><translate>LABEL.TIPO</translate></th>
+                                    <th class="col-md-2"><translate>LABEL.DDD</translate></th>
+                                    <th class="col-md-4"><translate>LABEL.NUMERO</translate></th>
+                                    <th class="col-md-2">
+                                        <button class="btn btn-table" title="{{'LABEL.ADICIONAR_TELEFONE' | translate}}"
+                                                data-ng-click="abrirEditarTelefone(servidor);">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="telefone in listaTelefoneServidor">
+                                    <td>{{telefone.tipo}}</td>
+                                    <td class="text-center">{{telefone.ddd}}</td>
+                                    <td>{{telefone.numero}}</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-table" title="{{'LABEL.EDITAR_TELEFONE' | translate}}"
+                                                data-ng-click="abrirEditarTelefone(telefone);">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br/>
+            </div>
+
+            <div id="step-3" data-ng-show="step === 3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label><translate>LABEL.ESCOLARIDADE</translate>:</label>
+                        <select class="form-control dropdown-toggle bordaLaranja">
+                            <option value="">Selecione</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label><translate>LABEL.CURSO</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.curso"
+                               data-ng-required="true">
+                    </div>
+                    <div class="col-md-6">
+                        <label><translate>LABEL.CURSO_COMPLEMENTAR</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.cursoComplementar"
+                               data-ng-required="true">
+                    </div>
+                </div>
+            </div>
+
+            <div id="step-4" data-ng-show="step === 4">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label><translate>LABEL.DATA_ADMISSAO</translate>:</label>
+                        <label-input-data data-ng-model="servidor.dataAdmissao"></label-input-data>
+                    </div>
+                    <div class="col-md-3">
+                        <label><translate>LABEL.VINCULO</translate>:</label>
+                        <select class="form-control dropdown-toggle bordaLaranja">
+                            <option value="">Selecione</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label><translate>LABEL.FUNCAO</translate>:</label>
+                        <select class="form-control dropdown-toggle bordaLaranja">
+                            <option value="">Selecione</option>
+                        </select>
+                    </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label><translate>LABEL.INDICADO_POR</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.indicado">
+                    </div>
+                    <div class="col-md-6">
+                        <label><translate>LABEL.LOTACAO</translate>:</label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.lotacao"
+                               data-ng-required="true">
+                    </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label><translate>LABEL.EXISTE_RESTRICAO_TRABALHO</translate>?</label><br>
+
+                        <input type="radio" data-ng-model="servidor.restricao" value="S" />
+                        <label class="control-label"><translate>LABEL.SIM</translate><span>&nbsp;</span></label>
+
+                        <input type="radio" data-ng-model="servidor.restricao" value="N" />
+                        <label class="control-label"><translate>LABEL.NAO</translate></label>
+                    </div>
+                    <div class="col-md-9">
+                        <label><translate>LABEL.QUAL_RESTRICAO</translate></label>
+                        <input class="form-control bordaLaranja" data-ng-model="servidor.restricaoDescricao">
+                    </div>
+                </div>
+            </div>
+            <br/>
+
+            <div class="text-right">
+                <button class="btn btn-primary" title="{{'LABEL.SALVAR' | translate}}">
+                    <span class="glyphicon glyphicon-ok">&nbsp;</span><translate>LABEL.SALVAR</translate>
+                </button>
+                <button type="button" class="btn btn-primary" title="{{'LABEL.VOLTAR' | translate}}"
+                        data-ng-click="voltarPesquisaServidor();">
+                    <span class="glyphicon glyphicon-arrow-left">&nbsp;</span><translate>LABEL.VOLTAR</translate>
+                </button>
+                <button type="button" class="btn btn-primary" title="{{'LABEL.LIMPAR' | translate}}"
+                        data-ng-click="carregarPagina();">
+                    <span class="glyphicon glyphicon-refresh">&nbsp;</span><translate>LABEL.LIMPAR</translate>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+

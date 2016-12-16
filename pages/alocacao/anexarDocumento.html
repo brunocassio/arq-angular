@@ -1,0 +1,90 @@
+<div id="anexarDocumento">
+
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <label class="panel-title pull-left">
+                <translate>LABEL.ANEXO_ALOCAO_SERVIDOR</translate>
+            </label>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <label><translate>LABEL.SERVIDOR</translate>:</label>
+                    <input class="form-control" data-ng-model="nome" disabled>
+                </div>
+                <div class="col-md-3">
+                    <label><translate>LABEL.DATA_MOVIMENTACAO</translate>:</label>
+                    <input class="form-control" disabled>
+                </div>
+                <div class="col-md-3">
+                    <label><translate>LABEL.SITUACAO</translate>:</label>
+                    <input class="form-control" disabled>
+                </div>
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label><translate>LABEL.UNIDADE_ORIGEM</translate>:</label>
+                    <input class="form-control" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label><translate>LABEL.UNIDADE_DESTINO</translate>:</label>
+                    <input class="form-control" disabled>
+                </div>
+            </div>
+            <br/>
+
+            <div class="text-right">
+                <button class="btn btn-primary" title="{{'LABEL.ANEXAR' | translate}}"
+                        data-ng-click="anexarDocumento();">
+                    <span class="glyphicon glyphicon-paperclip">&nbsp;</span><translate>LABEL.ANEXAR</translate>
+                </button>
+                <button type="button" class="btn btn-primary" title="{{'LABEL.VOLTAR' | translate}}"
+                        data-ng-click="voltarPesquisaAlocacao();">
+                    <span class="glyphicon glyphicon-arrow-left">&nbsp;</span><translate>LABEL.VOLTAR</translate>
+                </button>
+            </div>
+            <br/>
+
+            <div class="table-responsive" data-ng-show="listaAnexoResultado.length > 0">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-md-4"><translate>LABEL.ARQUIVO</translate></th>
+                            <th class="col-md-2"><translate>LABEL.DATA_ANEXO</translate></th>
+                            <th class="col-md-4"><translate>LABEL.TIPO</translate></th>
+                            <th class="col-md-2"><translate>LABEL.ACAO</translate></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="anexo in listaAnexoResultado">
+                            <td>{{anexo.nome}}</td>
+                            <td>{{anexo.data}}</td>
+                            <td>{{anexo.tipo}}</td>
+                            <td class="text-center">
+                                <button class="btn btn-table" title="{{'LABEL.ACAO' | translate}}"
+                                        data-ng-click="editarServidor(servidor);">
+                                    <span class="	glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                                <button class="btn btn-table" title="{{'LABEL.ACAO' | translate}}"
+                                        data-ng-click="editarServidor(servidor);">
+                                    <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                                </button>
+                                <button class="btn btn-table" title="{{'LABEL.ACAO' | translate}}"
+                                        data-ng-click="editarServidor(servidor);">
+                                    <span class="	glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                </button>
+                                <button class="btn btn-table" title="{{'LABEL.ACAO' | translate}}"
+                                        data-ng-click="editarServidor(servidor);">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="form-group" ng-class="{'has-error': form[id].$error.required && (!form[id].$pristine || form.$submitted)}">
+    <label for="{{id}}" class="control-label" ng-if="labelRender">
+        <translate>{{label}}</translate>
+        <span class="red" ng-if="obrigatorio">*</span>
+        <i ng-if="obrigatorio" ng-show="form[id].$error.required && (!form[id].$pristine || form.$submitted)"
+           class="fa fa-warning red" tooltip="{{labelAlertTooltipCopy}}" tooltip-placement="top"/>
+        <i ng-if="labelInfoTooltipRender" class="fa fa-info-circle blue" tooltip="{{labelInfoTooltip}}" tooltip-placement="top"/>
+        <i ng-if="labelQuestionTooltipRender" class="fa fa-question-circle green" tooltip="{{labelQuestionTooltip}}" tooltip-placement="top"/>
+    </label>
+
+	<select ng-multiple="true" class="form-control" name="{{id}}" id="{{id}}" ng-model="model" ng-options="{{options}} in lista {{trackBy}}"
+        ng-change="setChangeItem(model)" ng-disabled="disabled" ng-required="obrigatorio">
+    	<option value="">{{selecione}}</option>
+    </select>
+</div>

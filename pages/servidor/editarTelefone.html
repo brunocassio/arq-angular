@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h3 class="modal-title"><translate>LABEL.MANTER_TELEFONE_SERVIDOR</translate></h3>
+</div>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-3">
+            <label><translate>LABEL.TIPO</translate>:</label>
+            <select class="form-control dropdown-toggle bordaLaranja">
+                <option value="">Fixo</option>
+                <option value="">Celular</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label><translate>LABEL.DDD</translate>:</label>
+            <input class="form-control bordaLaranja" data-ng-model="servidor.telefone.ddd">
+        </div>
+        <div class="col-md-6">
+            <label><translate>LABEL.NUMERO</translate>:</label>
+            <input class="form-control bordaLaranja" data-ng-model="servidor.telefone.numero">
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" title="{{'LABEL.SALVAR' | translate}}">
+        <span class="glyphicon glyphicon-ok">&nbsp;</span><translate>LABEL.SALVAR</translate>
+    </button>
+    <button type="button" class="btn btn-primary" title="{{'LABEL.VOLTAR' | translate}}"
+            data-ng-click="fechar();">
+        <span class="glyphicon glyphicon-arrow-left">&nbsp;</span><translate>LABEL.VOLTAR</translate>
+    </button>
+</div>
+

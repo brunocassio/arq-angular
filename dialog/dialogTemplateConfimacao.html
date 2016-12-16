@@ -1,0 +1,14 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">{{$modalConfirm.title}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+	 {{$modalConfirm.message}}
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-primary" ng-click="$dismiss('cancel');$modalConfirm.callback(true);">
+		<span class="glyphicon glyphicon-ok">&nbsp;</span>{{$modalConfirm.confirmText}}
+	</button>
+	<button type="button" class="btn btn-primary"  ng-click="$dismiss('cancel');$modalConfirm.callback(false);">
+		<span class="glyphicon glyphicon-remove">&nbsp;</span>{{$modalConfirm.cancelText}}
+	</button>
+</div>

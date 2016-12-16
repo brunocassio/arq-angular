@@ -1,0 +1,52 @@
+<div>
+    <div class="row">
+
+        <input ng-hide="true" id="inputFileDocumento_{{documento.idTipoDocumento}}" type="file" nv-file-select="" uploader="documento.arquivo" options="{clearInputAfterAddedToQueue: true}"/>
+
+        <div class="col-md-12" ng-show="documento.arquivo.queue.length < 1">
+            <div nv-file-drop="" uploader="documento.arquivo" ng-click="acionarInputFile(documento.idTipoDocumento);">
+                <div nv-file-over="" uploader="documento.arquivo" over-class="another-file-over-class">
+                    <label class="file-input file-multiple">
+                        <span class="file-container">
+                            <span class="file-name" data-title="...">
+                                <i class="fa fa-cloud-upload"></i>
+                                <label><translate>LABEL.UPLOAD_MSG_ARRASTE</translate></label>
+                            </span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="documento.arquivo.queue.length > 0" ng-repeat="item in documento.arquivo.queue">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="file-input file-multiple">
+                    <span class="file-container" style="cursor: default">
+                        <div data-ng-show="documento.uploaded" class="file-name" data-title="...">
+                            <i class="fa fa-cloud-upload"></i>
+                            <label style="cursor: default !important;">{{ item.file.name }}</label>
+                        </div>
+                        <div data-ng-show="documento.uploaded" class="btn-group pull-right">
+                            <button type="button" class="btn btn bordaLaranja" data-ng-click="onDownload(documento.idDocFlow)">
+                                <i class="fa fa-download" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn bordaLaranja" data-ng-show="documento.avaliado" data-ng-click="onVisualizarAvaliacao(documento)">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                            <button type="button" class="btn btn bordaLaranja" data-ng-show="documento.editUpload" data-ng-click="removeQueue()">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
+                            <!--<button type="button" class="btn btn bordaLaranja" data-ng-click="removeAndAddQueue(item)">-->
+                                <!--<i class="glyphicon glyphicon-refresh"></i>-->
+                            <!--</button>-->
+                        </div>
+                        <div ng-hide="documento.uploaded" class="progress">
+                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': documento.arquivo.progress + '%' }"></div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

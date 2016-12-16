@@ -1,0 +1,101 @@
+
+input[type="checkbox"] {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+}
+
+label.obrigatorio::before {
+	content: "* ";
+	color: red;
+}
+
+output {
+    display: block;
+    padding-bottom: 10px;
+    padding-top: 0px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+}
+
+span.text-info {
+    color: #000 !important;
+}
+
+span[class*="input-group-btn"] button, .btn-table {
+	border: 1px solid #EE7621;
+}
+
+.btn-group .btn+.btn, .btn-group .btn+.btn-group, .btn-group .btn-group+.btn, .btn-group .btn-group+.btn-group {
+    margin-left: 2px;
+}
+
+.table>tbody>tr.warning>td, .table>tbody>tr.warning>th, .table>tbody>tr>td.warning,
+	.table>tbody>tr>th.warning, .table>tfoot>tr.warning>td, .table>tfoot>tr.warning>th,
+	.table>tfoot>tr>td.warning, .table>tfoot>tr>th.warning, .table>thead>tr.warning>td,
+	.table>thead>tr.warning>th, .table>thead>tr>td.warning, .table>thead>tr>th.warning
+	{
+	background-color: #ECF0F1 !important;
+}
+
+th>a {
+	color: dimgrey !important;
+}
+
+th {
+	text-align: center !important;
+	background-color: #ECF0F1 !important;
+}
+
+.form-group {
+	margin-bottom: 15px;
+	margin-right: 20px;
+	float: left;
+}
+
+legend {
+	color: dimgrey !important;
+	font-size: 17px;
+	box-shadow: 0px 2px dimgrey;
+}
+
+.panel-default>.panel-heading {
+	color: dimgrey !important;
+	font-size: 20px;
+}
+
+.icon-success {
+	color: green;
+}
+
+
+.icon-status {
+	color: dimgrey !important;
+}
+
+textarea {
+	resize: none
+}
+
+.div-button {
+	padding-left: 44px !important;
+	padding-right: 44px !important;
+	padding-top: 3px !important;
+	height: 50px !important;
+}
+
+.table-responsive {
+    min-height: .01%;
+    overflow-x: hidden; 
+}
+
+.extra-modal .modal-dialog {
+	width: 90%;
+	position: relative;
+	margin-top: 30px;
+	margin-right: auto;
+	margin-bottom: 30px;
+	margin-left: auto;
+}
